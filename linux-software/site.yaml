@@ -1,0 +1,26 @@
+- name: main playbook
+  hosts: localhost
+  become: true
+  become_method: sudo
+  become_user: root
+
+  # Ask for username to change user settings
+  vars_prompt:
+    - name: username
+      prompt: What is your username?
+      private: no
+      default: "ubuntu"
+
+  # pre_task could go here
+
+  # Main role to be ran
+  tasks:
+    - name: apply common configurations
+      import_role:
+        name: common
+        tasks_from: main
+
+  post_tasks:
+    - name: Successfull debug message
+      ansible.builtin.debug:
+        msg: 'Playbook ran successfully as user {{ username }}'

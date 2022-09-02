@@ -1,0 +1,17 @@
+---
+  # Main playbook
+- name: main playbook
+  hosts: localhost
+  become: true
+  pre_tasks:
+    - name: apply common configuration to all nodes
+      import_role:
+        name: common
+        tasks_from: main
+
+    # validate versions here
+  tasks:
+    - name: print to stdout
+      command: vagrant up
+
+  #post_tasks

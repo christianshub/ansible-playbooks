@@ -1,0 +1,44 @@
+sudo dnf config-manager --set-enabled crb
+
+sudo dnf install epel-release epel-next-release
+
+
+---
+
+sudo dnf groupinstall "Server with GUI" --skip-broken --nobest
+
+---
+
+sudo dnf install tigervnc-server xrdp
+
+---
+
+sudo systemctl start xrdp.service
+sudo systemctl status xrdp.service
+sudo systemctl enable xrdp.service
+
+---
+
+sudo adduser test
+sudo passwd test
+usermod -aG wheel test
+
+---
+
+sudo systemctl status firewalld.service
+
+sudo systemctl enable firewalld.service
+sudo systemctl start firewalld.service
+sudo firewall-cmd --permanent --add-port=3389/tcp
+
+
+---
+
+
+to ssh through any terminal:
+
+ssh -p 2222 vagrant@127.0.0.1
+
+---
+
+Port forward to use RDP into machine: https://superuser.com/questions/609065/rdp-into-virtualbox-on-windows

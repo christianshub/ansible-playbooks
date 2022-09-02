@@ -1,0 +1,36 @@
+- name: (CentOS) Set microsoft repo
+  yum_repository:
+    name: code
+    description: vscode
+    file: vscode
+    gpgkey: https://packages.microsoft.com/keys/microsoft.asc
+    baseurl: https://packages.microsoft.com/yumrepos/vscode
+  when:
+    - ansible_pkg_mgr == "yum"
+
+- name: (CentOS) Install vscode
+  yum:
+    name: code
+    state: present
+    update_cache: yes
+  when:
+    - ansible_pkg_mgr == "yum"
+
+- name: (Ubuntu) Install vscode
+  community.general.snap:
+    name:
+      - code
+    classic: yes
+  when:
+    - ansible_pkg_mgr == "apt"
+
+- name: Install list of extensions
+  command: code --install-extension {{item}}
+  become: false
+  with_items:
+    - redhat.ansible
+    - fabiospampinato.vscode-diff
+    - ms-python.python
+    - stkb.rewrap
+    - vscode-icons-team.vscode-icons
+    - redhat.vscode-yaml

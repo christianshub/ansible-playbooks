@@ -1,0 +1,54 @@
+sudo dnf install epel-release epel-next-release
+sudo dnf config-manager --set-enabled powertools;
+sudo dnf install epel-release epel-next-release
+
+
+---
+
+sudo dnf groupinstall "Server with GUI"
+
+---
+
+sudo dnf install tigervnc-server xrdp
+
+---
+
+sudo systemctl start xrdp.service
+sudo systemctl status xrdp.service
+sudo systemctl enable xrdp.service
+
+---
+
+sudo adduser test
+sudo passwd test
+sudo usermod -aG wheel test
+
+---
+
+sudo systemctl status firewalld.service
+
+sudo systemctl enable firewalld.service
+sudo systemctl start firewalld.service
+sudo firewall-cmd --permanent --add-port=3389/tcp
+
+---
+
+# remove initial setup settings
+sudo dnf remove -y initial-setup initial-setup-gui
+
+# isolate graphical target
+sudo systemctl isolate graphical.target
+sudo systemctl set-default graphical.target   # to make this persistant
+
+---
+
+RDP:
+
+eth1: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.56.102
+
+---
+
+to ssh through any terminal:
+
+ssh -p 2222 vagrant@127.0.0.1

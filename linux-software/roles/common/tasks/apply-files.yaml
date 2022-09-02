@@ -1,0 +1,9 @@
+- name: Copy new .bashrc
+  copy:
+    src: ./files/.bashrc
+    dest: /home/{{ username }}/.bashrc
+
+- name: Copy new .zshrc
+  copy:
+    src: ./files/.zshrc
+    dest: /home/{{ username }}/.zshrc
