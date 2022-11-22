@@ -1,6 +1,24 @@
 # Software installation
 
-Installs software on a CentOS 8 Stream distro.ss
+Installs the following:
+
+* vscode
+* vscode extensions:
+    * Ansible language support
+    * Diff files
+    * Rewrap
+    * vscode-icons
+    * YAML language support
+    * Dracula theme
+* customized `.bashrc`/`.zshrc` files
+
+## System requirements
+
+The playbook works for the following systems:
+
+* RHEL 9.1+
+* CentOS 8/9 Strema
+* Ubuntu
 
 ## How-to
 
@@ -8,6 +26,6 @@ Installs software on a CentOS 8 Stream distro.ss
 1) Execute `run.sh`
 
 ## TODO:
-- [X] vscode install extensions
-- [ ] zsh + autocompletion
-- [ ] install GNOME extension, enable lower window
+* [X] vscode install extensions
+* [ ] zsh + autocompletion/autosuggestions
+* [ ] install GNOME extension, enable lower window

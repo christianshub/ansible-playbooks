@@ -1,4 +1,4 @@
-- name: (CentOS) Set microsoft repo
+- name: (CentOS/RHEL) Set microsoft repo
   yum_repository:
     name: code
     description: vscode
@@ -6,15 +6,15 @@
     gpgkey: https://packages.microsoft.com/keys/microsoft.asc
     baseurl: https://packages.microsoft.com/yumrepos/vscode
   when:
-    - ansible_pkg_mgr == "yum"
+    - ansible_pkg_mgr == "dnf"
 
-- name: (CentOS) Install vscode
-  yum:
+- name: (RHEL/CentOS) Install vscode
+  dnf:
     name: code
     state: present
     update_cache: yes
   when:
-    - ansible_pkg_mgr == "yum"
+    - ansible_pkg_mgr == "dnf"
 
 - name: (Ubuntu) Install vscode
   community.general.snap:
@@ -30,7 +30,7 @@
   with_items:
     - redhat.ansible
     - fabiospampinato.vscode-diff
-    - ms-python.python
     - stkb.rewrap
     - vscode-icons-team.vscode-icons
     - redhat.vscode-yaml
+    - dracula-theme.theme-dracula
