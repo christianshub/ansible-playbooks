@@ -9,7 +9,7 @@
     - name: username
       prompt: What is your username?
       private: no
-      default: "ubuntu"
+      default: "christian"
 
   # pre_task could go here
 

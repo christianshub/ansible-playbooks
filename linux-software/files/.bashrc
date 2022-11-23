@@ -24,12 +24,16 @@ if [ -d ~/.bashrc.d ]; then
 	done
 fi
 
-# Run zsh
-# if [ "$SHELL" != "/usr/bin/bash" ]
-# then
-#     export SHELL="/usr/bin/bash"
-#     exec /usr/bin/bash
-# fi
+if [ -z "${NOZSH}" ] && [ $TERM = "xterm" -o $TERM = "xterm-256color" -o $TERM = "screen" ] && type zsh &> /dev/null
+then
+    export SHELL=$(which zsh)
+    if [[ -o login ]]
+    then
+        exec zsh -l
+    else
+        exec zsh
+    fi
+fi
 
 fetch() {
     git fetch
