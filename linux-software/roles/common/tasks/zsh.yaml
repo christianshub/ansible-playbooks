@@ -30,9 +30,6 @@
   args:
     chdir: '~{{ username }}'
     creates: '~{{ username }}/.oh-my-zsh'
-#   register: command_output
-# - debug:
-#     var: command_output.stdout_lines
 
 - name: Download autosuggestion
   command: 'git clone -c core.autocrlf=input --depth=1 https://github.com/zsh-users/zsh-autosuggestions.git ~{{ username }}/.oh-my-zsh/custom/plugins/zsh-autosuggestions'
@@ -52,22 +49,3 @@
   args:
     chdir: '~{{ username }}'
     creates: '~{{ username }}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting'
-
-
-
-# https://github.com/agkozak/zsh-z
-
-# git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions %
-# git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting % source ~/.zshrc
-
-
-# git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions % git clone https://github.com/zsh-users/zsh -syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting % source ~/.zshrc
-
-
-# git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-
-# - name: Download autosuggestion
-#   shell: 'git clone https://github.com/zsh-users/zsh-autosuggestions ${~{{ username }}/.oh-my-zsh/custom:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions'
-#   # args:
-#   #   chdir: '~{{ username }}'
-#   #   creates: '~{{ username }}/.zsh-autosuggestions'

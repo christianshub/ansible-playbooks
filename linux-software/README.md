@@ -23,5 +23,5 @@ Installs the following:
 The playbook works for the following systems:
 
 * RHEL 9.1+
-* CentOS 8/9 Strema
+* CentOS 8/9 Stream
 * Ubuntu
