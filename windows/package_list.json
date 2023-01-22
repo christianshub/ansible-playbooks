@@ -4,7 +4,7 @@
         "x64dbg.portable",
         "ccleaner",
         "signal",
-        "vmware-workstation",
+        "vmwareworkstation",
         "git",
         "vscode",
         "vcredist140",
@@ -13,9 +13,9 @@
         "vlc",
         "spotify",
         "wireshark",
-        "network-miner",
         "dropbox",
         "rufus",
-        "visualstudio2022community"
+        "visualstudio2022community",
+        "nordvpn"
     ]
 }
