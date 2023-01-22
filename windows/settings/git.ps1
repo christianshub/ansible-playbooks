@@ -13,4 +13,4 @@ Add-Content $Profile "function pull { git pull origin main }"
 Add-Content $Profile "function push { param([string]`$args = `"WIP`"); git add .; git commit -m `$args[0]; git push }"
 
 Add-Content $Profile "function gitreset { git reset (git merge-base main (git branch --show-current)) }"
-##
+## test
