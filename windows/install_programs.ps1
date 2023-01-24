@@ -4,7 +4,6 @@ $listOk = @()
 $someFailed = $false
 $choice = $null
 
-
 function startProccess{
     Write-Output "`nChecking packages...`n"
     foreach($i in $programs){
