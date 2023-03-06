@@ -1,22 +1,13 @@
 {
     "list": [
         "firefox",
-        "x64dbg.portable",
         "ccleaner",
-        "signal",
         "git",
         "vscode",
-        "vcredist140",
         "python3",
         "7zip.install",
         "vlc",
         "spotify",
-        "wireshark",
-        "dropbox",
-        "rufus",
-        "visualstudio2022community",
-        "nordvpn",
         "discord",
-        "010editor"
     ]
 }

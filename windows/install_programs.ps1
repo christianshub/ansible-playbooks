@@ -1,4 +1,6 @@
-﻿$packageListName = 'package_list.json'
+﻿Invoke-Expression (Invoke-RestMethod 'https://community.chocolatey.org/install.ps1')
+
+$packageListName = 'package_list.json'
 $programs = (Get-Content -Raw -Path $packageListName | ConvertFrom-Json).list
 $listOk = @()
 $someFailed = $false
