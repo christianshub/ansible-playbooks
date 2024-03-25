@@ -1,64 +1,66 @@
-# Path to your oh-my-zsh configuration.
 export ZSH="$HOME/.oh-my-zsh"
-
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-#export ZSH_THEME="robbyrussell"
 export ZSH_THEME="simple"
+export KUBE_EDITOR="code --wait"
+export EDITOR="code --wait"
+export VISUAL="code --wait"
 
-# Set to this to use case-sensitive completion
-# export CASE_SENSITIVE="true"
+plugins=(git kubectl kube-ps1 zsh-autosuggestions zsh-syntax-highlighting)
 
-# Comment this out to disable weekly auto-update checks
-# export DISABLE_AUTO_UPDATE="true"
-
-# Uncomment following line if you want to disable colors in ls
-# export DISABLE_LS_COLORS="true"
-
-# Uncomment following line if you want to disable autosetting terminal title.
-# export DISABLE_AUTO_TITLE="true"
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git zsh-autosuggestions z zsh-syntax-highlighting web-search)
-
+source <(kubectl completion zsh)
 source $ZSH/oh-my-zsh.sh
-source $ZSH/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source $ZSH/custom/plugins/zsh-z/zsh-z.plugin.zsh
-source $ZSH/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 fetch() {
-    git fetch
+  git fetch
 }
 
-pull() {
-    git pull origin main
+pull () {
+  git pull
 }
 
 push() {
-    local message=""
+  local message=""
 
-    if [ -z "$1" ] # if first param is zero
-    then
-        message="WIP"
-    else
-        message=$1
-    fi
+  if [ -z "$1" ]; then
+    message="WIP"
+  else
+    message="$1"
+  fi
 
     git add -A
     git commit -m "$message"
-    git push --force
+    push_output=$(git push --force 2>&1)
+    push_status=$?
+
+    if [[ $push_status -ne 0 && $push_output == *"has no upstream branch"* ]]; then
+        local branch_name=$(git rev-parse --abbrev-ref HEAD)
+        echo "Settings upstream branch to 'origin/$branch_name' and pushing ..."
+
+        git push --set-upstream origin $branch_name --force
+    elif [[ $push_status -ne 0 ]]; then
+        echo "An error occurred while pushing: $push_output"
+    else
+        echo "Pushed successfully"
+    fi
 }
 
-reset () {
-    git reset $(git merge-base main $(git branch --show-current))
+reset()
+{
+  git reset $(git merge-base master $(git brnach --show-current))
 }
 
+alias kubectl=kubecolor
+compdef kubecolor=kubectl 
+alias c='kubectx'
+alias k='kubectl'
+alias n='kubens'
+alias f="fzf"
+alias kn='kubens'
+alias swiss-up='kubectl run -it swiss-up --image=busybox --bash'
+alias swiss-down='kubectl delete pod swiss-army-knife'
+alias ml='docker run -it --rm --name megalinter -v $(pwd)/:/tmp/lint docker.io/oxsecurity/megalinter-terraform:v7.9.0'
 
-unset rc
+export PATH=$PATH:/home/user/go/bin
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+eval "$(fzf --zsh)"
 
-export KUBE_EDITOR='code --wait'
-export EDITOR='code --wait'
-export VISUAL='code --wait'
+PROMPT='$(kube_ps1)'$PROMPT # or RPROMPT='$(kube_ps1)'

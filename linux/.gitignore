@@ -1,1 +1,4 @@
-env
+.vscode
+.project
+.megalinter-reports
+.cache
