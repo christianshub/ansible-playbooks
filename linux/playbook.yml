@@ -15,6 +15,9 @@
           - wget
           - python3
           - unzip
+          - direnv
+          - pass
+          - xorriso
         state: present
     
     - name: Purge unwanted services

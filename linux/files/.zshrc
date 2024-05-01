@@ -62,5 +62,6 @@ alias ml='docker run -it --rm --name megalinter -v $(pwd)/:/tmp/lint docker.io/o
 export PATH=$PATH:/home/user/go/bin
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 eval "$(fzf --zsh)"
+eval "$(direnv hook zsh)"
 
 PROMPT='$(kube_ps1)'$PROMPT # or RPROMPT='$(kube_ps1)'

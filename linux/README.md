@@ -5,6 +5,11 @@
 * Ubuntu 22.04+ distro
 * AMD64 architecture, Windows 11 host PC
 
+## TODO
+
+- Brew install packer
+
+
 ## Features
 
 Edit the [variables](variables.yml) file to enable/disable features this playbook provides
@@ -28,7 +33,7 @@ Features:
 
 1. Clone the repo
 1. cd to the root of the repo
-1. Run `sudo apt install dos2unix && dos2unix bootstrap.sh && bash bootstrap.sh`
+1. Run `sudo apt update -y && sudo apt install dos2unix && find . -type f -exec dos2unix {} \; && bash bootstrap.sh`
 
 ### WSL
 
