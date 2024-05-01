@@ -22,17 +22,22 @@ Features:
 * ✅ Kubens
 * ✅ fzf
 * ✅ Kubecolor
+* ✅ git-delta
 
 ## Install
 
 1. Clone the repo
 1. cd to the root of the repo
-1. Run `bootstrap.sh`
+1. Run `sudo apt install dos2unix && dos2unix bootstrap.sh && bash bootstrap.sh`
 
 ### WSL
 
 If using WSL, ensure you first copy the repo into the WSL distro:
 
 ```Powershell
-Copy-Item -Path "C:\Users\user\Documents\repos\os-setup\linux" -Destination "\\wsl$\Ubuntu-22.04\home\user\linux\" -Recurse -Force
+Copy-Item -Path "C:\Users\user\Documents\repos\os-setup\linux" -Destination "\\wsl.localhost\Ubuntu-24.04\home\user" -Recurse -Force
 ```
+
+## Linting
+
+Run megalinter against this repo:

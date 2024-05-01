@@ -32,3 +32,7 @@
 - name: krew
   ansible.builtin.include_tasks: "krew.yml"
   when: krew_install is defined
+
+- name: git-delta
+  ansible.builtin.include_tasks: "git-delta.yml"
+  when: krew_install is defined
