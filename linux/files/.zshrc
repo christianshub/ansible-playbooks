@@ -51,9 +51,8 @@ reset()
 
 alias kubectl=kubecolor
 compdef kubecolor=kubectl 
-alias c='kubectx'
+alias kc='kubectx'
 alias k='kubectl'
-alias n='kubens'
 alias f="fzf"
 alias kn='kubens'
 alias swiss-up='kubectl run -it swiss-up --image=busybox --bash'
