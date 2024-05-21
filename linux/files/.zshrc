@@ -3,6 +3,7 @@ export ZSH_THEME="simple"
 export KUBE_EDITOR="code --wait"
 export EDITOR="code --wait"
 export VISUAL="code --wait"
+export KUBECONFIG=~/.kube/local.yaml:~/.kube/rke2.yaml
 
 plugins=(git kubectl kube-ps1 zsh-autosuggestions zsh-syntax-highlighting)
 
